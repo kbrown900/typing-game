@@ -19,6 +19,13 @@ let startTime = Date.now();
 const quoteElement = document.getElementById('quote');
 const messageElement = document.getElementById('message');
 const typedValueElement = document.getElementById('typed-value');
+
+//UI text-box setup
+//clear text box, disable it.
+typedValueElement.value = ''
+document.getElementById('typed-value').disabled = true; //enables text-box
+
+
 // at the end of script.js
 document.getElementById('start').addEventListener('click', () => {
     // get a quote
