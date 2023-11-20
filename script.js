@@ -19,7 +19,6 @@ let startTime = Date.now();
 const quoteElement = document.getElementById('quote');
 const messageElement = document.getElementById('message');
 const typedValueElement = document.getElementById('typed-value');
-
 // at the end of script.js
 document.getElementById('start').addEventListener('click', () => {
     // get a quote
@@ -39,6 +38,7 @@ document.getElementById('start').addEventListener('click', () => {
     quoteElement.childNodes[0].className = 'highlight';
     // Clear any prior messages
     messageElement.innerText = '';
+    document.getElementById('typed-value').disabled = false; //enables text-box
   
     // Setup the textbox
     // Clear the textbox
@@ -61,8 +61,11 @@ typedValueElement.addEventListener('input', () => {
     if (typedValue === currentWord && wordIndex === words.length - 1) {
       // end of sentence
       // Display success
+      typedValueElement.value = ''; //sets text-box input to emtpy
+      document.getElementById('typed-value').disabled = true; //disables text-box
       const elapsedTime = new Date().getTime() - startTime;
       const message = `CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`;
+      
       messageElement.innerText = message;
     } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) {
       // end of word
